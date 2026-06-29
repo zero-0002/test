@@ -7,16 +7,30 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="wrap">
-    <canvas id="game" width="200" height="400"></canvas>
-    <div class="panel">
-      <div id="score">Score: 0</div>
-      <div id="lines">Lines: 0</div>
-      <div class="next-label">Next</div>
-      <canvas id="next" width="80" height="80"></canvas>
-      <button id="restart">Restart</button>
+  <div class="app-shell">
+    <section class="game-area">
+      <div class="title-bar">
+        <h1>TETRIS</h1>
+        <p>Classic block drop game in JavaScript</p>
+      </div>
+      <canvas id="game" width="200" height="400"></canvas>
+    </section>
+
+    <aside class="panel">
+      <div class="panel-card stats-card">
+        <div class="panel-title">Stats</div>
+        <div class="stat-row"><span>Score</span><strong id="score">0</strong></div>
+        <div class="stat-row"><span>Lines</span><strong id="lines">0</strong></div>
+      </div>
+
+      <div class="panel-card next-card">
+        <div class="panel-title">Next</div>
+        <canvas id="next" width="80" height="80"></canvas>
+      </div>
+
+      <button id="restart">Restart Game</button>
       <p class="hint">Controls: ← → ↓ rotate: ↑  drop: Space</p>
-    </div>
+    </aside>
   </div>
   <script src="tetris.js"></script>
 </body>
