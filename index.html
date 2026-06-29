@@ -7,39 +7,48 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="new-shell">
-    <section class="status-bar">
-      <div class="status-panel">
-        <div class="status-title">SCORE</div>
-        <div id="score" class="status-value">0</div>
+  <div class="grid-shell">
+    <header class="hero">
+      <div>
+        <span class="eyebrow">Retro Arcade</span>
+        <h1>Block Drop</h1>
+        <p>Enjoy a fresh Tetris layout with a speedway-inspired interface.</p>
       </div>
-      <div class="status-panel">
-        <div class="status-title">LINES</div>
-        <div id="lines" class="status-value">0</div>
-      </div>
-      <button id="restart">Restart</button>
-    </section>
-
-    <section class="game-frame">
-      <div class="frame-header"><span>Play Field</span></div>
-      <canvas id="game" width="200" height="400"></canvas>
-    </section>
-
-    <aside class="control-panel">
-      <div class="tile-card next-card">
-        <div class="tile-label">Next</div>
-        <canvas id="next" width="100" height="100"></canvas>
-      </div>
-      <div class="tile-card rules-card">
-        <div class="tile-label">Controls</div>
-        <div class="control-list">
-          <span>← → : Move</span>
-          <span>↓ : Drop</span>
-          <span>↑ : Rotate</span>
-          <span>Space : Hard Drop</span>
+      <div class="hero-panel">
+        <div class="hero-stats">
+          <div>
+            <p>Score</p>
+            <strong id="score">0</strong>
+          </div>
+          <div>
+            <p>Lines</p>
+            <strong id="lines">0</strong>
+          </div>
         </div>
+        <button id="restart">Restart</button>
       </div>
-    </aside>
+    </header>
+
+    <main class="main-content">
+      <section class="game-shell">
+        <canvas id="game" width="200" height="400"></canvas>
+      </section>
+      <aside class="side-panel">
+        <div class="card next-card">
+          <div class="card-title">Next Piece</div>
+          <canvas id="next" width="100" height="100"></canvas>
+        </div>
+        <div class="card instructions-card">
+          <div class="card-title">Controls</div>
+          <ul>
+            <li>← → : Move</li>
+            <li>↓ : Soft drop</li>
+            <li>↑ : Rotate</li>
+            <li>Space : Hard drop</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
   </div>
   <script src="tetris.js"></script>
 </body>
