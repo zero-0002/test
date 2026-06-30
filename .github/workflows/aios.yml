@@ -1,0 +1,46 @@
+# AIOS Governance — GitHub Actions workflow
+# Drop this file into .github/workflows/aios.yml in any repo you want to govern.
+#
+# Setup (one time):
+#   1. Go to your repo: Settings > Secrets and variables > Actions > New secret
+#      Name: AIOS_API_KEY   Value: <your key from the AIOS dashboard>
+#   2. Commit this file. The action runs automatically on every push and PR.
+#
+# To block merges on a GATE finding, change fail-on-gate to: true
+
+name: AIOS Governance
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  govern:
+    name: Govern changed files
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: AIOS Governance
+        env:
+          INPUT_API-KEY: ${{ secrets.AIOS_API_KEY }}
+          INPUT_SERVER-URL: https://aios.visnryentertainment.com
+          INPUT_GOVERNANCE-PROFILE: L2
+          INPUT_FAIL-ON-GATE: 'false'
+          INPUT_COMMENT-MODE: summary
+          INPUT_MAX-FILES: '200'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -fsSL https://aios.visnryentertainment.com/gha-runner.js -o aios-runner.js
+          node aios-runner.js
