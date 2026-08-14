@@ -1,0 +1,12 @@
+{
+  "name": "block-drop-tetris",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Vanilla JS Tetris clone with canvas rendering and Node unit tests",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
